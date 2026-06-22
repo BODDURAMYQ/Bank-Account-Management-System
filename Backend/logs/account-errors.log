@@ -1,0 +1,2 @@
+[2026-06-18T17:43:04.782Z] Account lookup failed in createTransaction - accountId: 000000000000000000000000, body: {"accountId":"000000000000000000000000","transactionType":"Deposit","amount":1}, ip: ::1
+[2026-06-18T17:43:08.851Z] Account lookup failed in createTransaction - accountId: 000000000000000000000000, body: {"accountId":"000000000000000000000000","transactionType":"Deposit","amount":1}, ip: ::1

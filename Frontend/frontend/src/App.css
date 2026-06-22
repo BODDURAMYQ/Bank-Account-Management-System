@@ -1,0 +1,257 @@
+/* =========================
+   GLOBAL
+========================= */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #eef2f7, #dbe9f4);
+}
+
+.App {
+  text-align: center;
+}
+
+.main-content {
+  padding-bottom: 80px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+  background: linear-gradient(90deg, #0d6efd, #0b5ed7) !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white !important;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  color: white !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 15px !important;
+  margin: 0 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Different Colors */
+.home-btn {
+  background: #198754;
+}
+
+.dashboard-btn {
+  background: #6f42c1;
+}
+
+.deposit-btn {
+  background: #20c997;
+}
+
+.withdraw-btn {
+  background: #dc3545;
+}
+
+.transfer-btn {
+  background: #fd7e14;
+}
+
+.login-btn {
+  background: #0dcaf0;
+}
+
+.register-btn {
+  background: #198754;
+}
+
+.admin-btn {
+  background: #212529;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: white !important;
+  border: none;
+}
+
+.logout-btn:hover {
+  background: #bb2d3b;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #0d6efd;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  z-index: 1000;
+  font-weight: 500;
+}
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+.dashboard-card {
+  border: none;
+  border-radius: 18px;
+  background: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   CARDS
+========================= */
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.card-header {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+}
+
+/* =========================
+   TABLES
+========================= */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-dark th {
+  background: #0d6efd !important;
+  color: white;
+}
+
+/* =========================
+   FORMS
+========================= */
+.form-control {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 8px rgba(13,110,253,0.3);
+}
+
+/* =========================
+   HOME PAGE HERO
+========================= */
+.hero-section {
+  background: linear-gradient(135deg, #0d6efd, #20c997);
+  color: white;
+  padding: 70px 20px;
+  border-radius: 20px;
+  margin-top: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+}
+/* ================= NAVBAR BUTTONS ================= */
+
+.nav-btn {
+  color: white !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 16px !important;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.home-btn {
+  background: #20c997;
+}
+
+.dashboard-btn {
+  background: #198754;
+}
+
+.deposit-btn {
+  background: #0dcaf0;
+}
+
+.withdraw-btn {
+  background: #ffc107;
+  color: black !important;
+}
+
+.transfer-btn {
+  background: #dc3545;
+}
+
+.admin-btn {
+  background: #212529;
+}
+
+.login-btn {
+  background: #0d6efd;
+}
+
+.register-btn {
+  background: #6c757d;
+}
+
+.logout-btn {
+  background: white;
+  color: #0d6efd;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.nav-btn:hover,
+.logout-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Navbar Shadow */
+.navbar {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
