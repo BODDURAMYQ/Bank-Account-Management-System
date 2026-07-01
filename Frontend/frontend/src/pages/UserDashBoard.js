@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+﻿import React, { useCallback, useEffect, useState } from 'react';
 import api from '../services/api';
 
 const getStoredUser = () => {
@@ -15,6 +15,7 @@ function UserDashBoard() {
   const [balance, setBalance] = useState(Number(localStorage.getItem('accountBalance') || user?.balance || 0));
   const [totalDeposits, setTotalDeposits] = useState(0);
   const [totalWithdrawals, setTotalWithdrawals] = useState(0);
+  const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [prevUserId, setPrevUserId] = useState(user?._id || '');
@@ -41,20 +42,20 @@ function UserDashBoard() {
       localStorage.setItem('accountBalance', accountData.balance);
 
       setUser((currentUser) => {
-        if (!currentUser) {
-          return currentUser;
-        }
-
+        if (!currentUser) return currentUser;
         const updatedUser = { ...currentUser, accountId: effectiveAccountId, balance: accountData.balance };
         localStorage.setItem('user', JSON.stringify(updatedUser));
         return updatedUser;
       });
 
+      // ✅ Fetch transactions
       const transactionResponse = await api.get('/transactions');
       const accountTransactions = transactionResponse.data.filter((txn) => {
         const txnAccountId = txn.accountId?._id || txn.accountId;
         return txnAccountId === effectiveAccountId;
       });
+
+      setTransactions(accountTransactions);
 
       const deposits = accountTransactions
         .filter((txn) => txn.transactionType === 'Deposit')
@@ -106,34 +107,67 @@ function UserDashBoard() {
           <p>Logout and login again if your account details are missing.</p>
         </div>
       ) : (
-        <div className="row">
-          <div className="col-md-4">
-            <div className="card shadow">
-              <div className="card-body text-center">
-                <h5>Account Balance</h5>
-                <h3>Rs. {balance}</h3>
+        <>
+          <div className="row mb-4">
+            <div className="col-md-4">
+              <div className="card shadow">
+                <div className="card-body text-center">
+                  <h5>Account Balance</h5>
+                  <h3>Rs. {balance}</h3>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="card shadow">
+                <div className="card-body text-center">
+                  <h5>Total Deposits</h5>
+                  <h3>Rs. {totalDeposits}</h3>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="card shadow">
+                <div className="card-body text-center">
+                  <h5>Total Withdrawals</h5>
+                  <h3>Rs. {totalWithdrawals}</h3>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="col-md-4">
-            <div className="card shadow">
-              <div className="card-body text-center">
-                <h5>Total Deposits</h5>
-                <h3>Rs. {totalDeposits}</h3>
-              </div>
+          {/* ✅ Transaction History Table */}
+          <div className="card shadow mt-4">
+            <div className="card-body">
+              <h5 className="text-secondary">Transaction History</h5>
+              {transactions.length > 0 ? (
+                <table className="table table-striped mt-2">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {transactions.map((txn, index) => (
+                      <tr key={index}>
+                        <td>{txn.date ? new Date(txn.date).toLocaleString() : '-'}</td>
+                        <td>{txn.transactionType}</td>
+                        <td>Rs. {txn.amount}</td>
+                        <td>{txn.status || 'Success'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-muted">No transactions found.</p>
+              )}
             </div>
           </div>
-
-          <div className="col-md-4">
-            <div className="card shadow">
-              <div className="card-body text-center">
-                <h5>Total Withdrawals</h5>
-                <h3>Rs. {totalWithdrawals}</h3>
-              </div>
-            </div>
-          </div>
-        </div>
+        </>
       )}
     </div>
   );
